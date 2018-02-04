@@ -8,5 +8,6 @@
         "CountdownForm": "<rootDir>/app/components/CountdownForm.jsx",
         "Countdown": "<rootDir>/app/components/Countdown.jsx"
     },
-    "setupTestFrameworkScriptFile": "<rootDir>/app/testSetup.js"
+    "setupTestFrameworkScriptFile": "<rootDir>/app/testSetup.js",
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
 }
