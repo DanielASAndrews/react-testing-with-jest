@@ -2,7 +2,7 @@ import React from 'react';
 import { mount, shallow, configure } from 'enzyme';
 import Clock from 'Clock';
 
-import Adapter from 'enzyme-adapter-react-15.4';
+import Adapter from 'enzyme-adapter-react-16';
 
 configure({ adapter: new Adapter() });
 
