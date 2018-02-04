@@ -1,5 +1,4 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
 import CountdownForm from 'CountdownForm';
 
 describe('CountdownForm', ()=> {
