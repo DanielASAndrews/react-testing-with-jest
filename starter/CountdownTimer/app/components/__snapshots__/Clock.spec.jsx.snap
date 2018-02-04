@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Clock Snapshots formatTime should format seconds when minutes or seconds are less than 10 1`] = `"00:09"`;
+
+exports[`Clock Snapshots formatTime should format time 1`] = `"02:00"`;
+
+exports[`Clock Snapshots render should render the clock 1`] = `
+<div
+  className="clock"
+>
+  <span
+    className="clock-text"
+  >
+    01:00
+  </span>
+</div>
+`;
+
+exports[`Clock Snapshots should render Clock without crashing 1`] = `
+<Clock
+  timeInSeconds={0}
+>
+  <div
+    className="clock"
+  >
+    <span
+      className="clock-text"
+    >
+      00:00
+    </span>
+  </div>
+</Clock>
+`;

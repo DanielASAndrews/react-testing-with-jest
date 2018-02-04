@@ -17,8 +17,8 @@ describe('Clock', () => {
     });
 
     describe('formatTime', () => {
-        it('should format time', ()=> {
-            const clock = shallow (<Clock />);
+        it('should format time', () => {
+            const clock = shallow(<Clock />);
             const seconds = 120;
             const expected = "02:00";
             const actual = clock.instance().formatTime(seconds);
@@ -26,13 +26,45 @@ describe('Clock', () => {
             expect(actual).toBe(expected);
         });
 
-        it('should format seconds when minutes or seconds are less than 10', ()=>{
+        it('should format seconds when minutes or seconds are less than 10', () => {
             const clock = shallow(<Clock />);
             const seconds = 9;
             const expected = "00:09";
             const actual = clock.instance().formatTime(seconds);
 
             expect(actual).toBe(expected);
+        });
+    });
+
+    describe('Snapshots', () => {
+        it('should render Clock without crashing', () => {
+            const wrapper = mount(<Clock />);
+            expect(wrapper).toMatchSnapshot();
+        });
+
+        describe('render', () => {
+            it('should render the clock', () => {
+                const clock = shallow(<Clock timeInSeconds={60} />);
+                expect(clock).toMatchSnapshot();
+            });
+        });
+
+        describe('formatTime', () => {
+            it('should format time', () => {
+                const clock = shallow(<Clock />);
+                const seconds = 120;
+                const actual = clock.instance().formatTime(seconds);
+
+                expect(actual).toMatchSnapshot();
+            });
+
+            it('should format seconds when minutes or seconds are less than 10', () => {
+                const clock = shallow(<Clock />);
+                const seconds = 9;
+                const actual = clock.instance().formatTime(seconds);
+
+                expect(actual).toMatchSnapshot();
+            });
         });
     });
 });
