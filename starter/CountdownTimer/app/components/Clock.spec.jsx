@@ -1,11 +1,37 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { mount, shallow, configure } from 'enzyme';
 import Clock from 'Clock';
 
-describe('Clock', ()=>{
-    it('should render Clock', ()=>{
-        const div = document.createElement('div');
+import Adapter from 'enzyme-adapter-react-15.4';
 
-        ReactDOM.render(<Clock />, div);
-    })
-})
+configure({ adapter: new Adapter() });
+
+describe('Clock', () => {
+    it('should render Clock without crashing', () => {
+        mount(<Clock />);
+    });
+
+    describe('render', () => {
+        it('should render the clock', () => {
+            const clock = shallow(<Clock timeInSeconds={60} />);
+            const time = <span className="clock-text">01:00</span>;
+
+            expect(clock.contains(time)).toEqual(true);
+        });
+    });
+
+    describe('formatTime', () => {
+        it('should format time', ()=> {
+            const clock = shallow (<Clock />);
+            const seconds = 120;
+            const expected = "02:00";
+            const actual = clock.instance().formatTime(seconds);
+
+            expect(actual).toBe(expected);
+        });
+    });
+
+
+
+
+});
