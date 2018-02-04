@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class CountdownForm extends React.Component {
     onSubmit(e) {
@@ -22,5 +23,9 @@ class CountdownForm extends React.Component {
         );
     }
 }
+
+CountdownForm.propTypes = {
+    onSetCountdownTime: PropTypes.func
+};
 
 export default CountdownForm;
