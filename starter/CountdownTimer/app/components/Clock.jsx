@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Clock extends React.Component {
     formatTime(timeInSeconds) {
@@ -29,7 +30,7 @@ class Clock extends React.Component {
 }
 
 Clock.propTypes = {
-    timeInSeconds: React.PropTypes.number
+    timeInSeconds: PropTypes.number
 };
 
 Clock.defaultProps = {
