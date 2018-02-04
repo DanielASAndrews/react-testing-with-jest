@@ -29,9 +29,14 @@ describe('Clock', () => {
 
             expect(actual).toBe(expected);
         });
+
+        it('should format seconds when minutes or seconds are less than 10', ()=>{
+            const clock = shallow(<Clock />);
+            const seconds = 9;
+            const expected = "00:09";
+            const actual = clock.instance().formatTime(seconds);
+
+            expect(actual).toBe(expected);
+        });
     });
-
-
-
-
 });
