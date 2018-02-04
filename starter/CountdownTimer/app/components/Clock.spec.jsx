@@ -1,10 +1,6 @@
 import React from 'react';
-import { mount, shallow, configure } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import Clock from 'Clock';
-
-import Adapter from 'enzyme-adapter-react-16';
-
-configure({ adapter: new Adapter() });
 
 describe('Clock', () => {
     it('should render Clock without crashing', () => {
@@ -17,6 +13,7 @@ describe('Clock', () => {
             const time = <span className="clock-text">01:00</span>;
 
             expect(clock.contains(time)).toEqual(true);
+            expect(clock.find('.clock-text').text()).toBe("01:00");
         });
     });
 
