@@ -2,13 +2,16 @@ import React from 'react';
 import Clock from 'Clock';
 
 describe('Clock', () => {
-    it('should render Clock without crashing', () => {
-        mount(<Clock />);
+
+    let clock;
+
+    beforeEach(() => {
+        clock = shallow(<Clock />);
     });
 
     describe('render', () => {
         it('should render the clock', () => {
-            const clock = shallow(<Clock timeInSeconds={60} />);
+            clock.setProps({ timeInSeconds: 60 });
             const time = <span className="clock-text">01:00</span>;
 
             expect(clock.contains(time)).toEqual(true);
@@ -18,7 +21,6 @@ describe('Clock', () => {
 
     describe('formatTime', () => {
         it('should format time', () => {
-            const clock = shallow(<Clock />);
             const seconds = 120;
             const expected = "02:00";
             const actual = clock.instance().formatTime(seconds);
@@ -27,7 +29,6 @@ describe('Clock', () => {
         });
 
         it('should format seconds when minutes or seconds are less than 10', () => {
-            const clock = shallow(<Clock />);
             const seconds = 9;
             const expected = "00:09";
             const actual = clock.instance().formatTime(seconds);
@@ -37,21 +38,16 @@ describe('Clock', () => {
     });
 
     describe('Snapshots', () => {
-        it('should render Clock without crashing', () => {
-            const wrapper = mount(<Clock />);
-            expect(wrapper).toMatchSnapshot();
-        });
 
         describe('render', () => {
             it('should render the clock', () => {
-                const clock = shallow(<Clock timeInSeconds={60} />);
+                clock.setProps({ timeInSeconds: 60 });
                 expect(clock).toMatchSnapshot();
             });
         });
 
         describe('formatTime', () => {
             it('should format time', () => {
-                const clock = shallow(<Clock />);
                 const seconds = 120;
                 const actual = clock.instance().formatTime(seconds);
 
@@ -59,7 +55,6 @@ describe('Clock', () => {
             });
 
             it('should format seconds when minutes or seconds are less than 10', () => {
-                const clock = shallow(<Clock />);
                 const seconds = 9;
                 const actual = clock.instance().formatTime(seconds);
 
